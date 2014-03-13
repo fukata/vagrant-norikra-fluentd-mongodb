@@ -35,3 +35,4 @@
     system.indexes
     > db.order_logs.price_10s.find()
     { "_id" : ObjectId("532145889e1a30068400000d"), "cnt" : 7, "avg_price" : 27071.428571428572, "total_price" : 189500, "time" : ISODate("2014-03-13T05:43:07Z") }
+
