@@ -2,8 +2,6 @@
 
 echo "Installing development tools ..."
 yum update -y >> /dev/null
-#yum groupinstall -y "Development Tools" >> /dev/null
-#yum install -y docker-io >> /dev/null
 yum install -y openssl openssl-devel >> /dev/null
 yum install -y java-1.7.0-openjdk java-1.7.0-openjdk-devel >> /dev/null
 yum install -y git-core >> /dev/null
@@ -18,6 +16,7 @@ echo "Installing ruby-2.1.1 ..."
 
 echo "Installing mongodb ..."
 yum install -y mongodb mongodb-server >> /dev/null
+chkconfig mongod on
 /etc/init.d/mongod start
 
 echo "Installing norikra ..."
