@@ -1,0 +1,2 @@
+vagrant-norikra-fluentd-mongodb
+===============================
