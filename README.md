@@ -1,9 +1,19 @@
+# vagrant-norikra-fluentd-mongodb
 
-    # add query
+## How to use
+
+    vagrant up
+    vagrant ssh
+
+    # start 
+    ./local/jruby-1.7/bin/norikra start
+    ./local/ruby-2.1/bin/fluentd -c /vagrant/fluentd.conf
+
+    # query
     ./local/ruby-2.1/bin/norikra-client query add order_logs.price_10s 'select count(*) as cnt, sum(price) as total_price, avg(price) as avg_price from order_logs.win:time_batch(10 sec)'
     ./local/ruby-2.1/bin/norikra-client query add order_logs.price_10s_user 'select user, count(*) as cnt, sum(price) as total_price, avg(price) as avg_price from order_logs.win:time_batch(10 sec) group by user'
 
-    # add log
+    # log
     echo '{"user":"user1", "price":1000}' |./local/ruby-2.1/bin/fluent-cat data.order_logs
     echo '{"user":"user1", "price":3000}' |./local/ruby-2.1/bin/fluent-cat data.order_logs
     echo '{"user":"user2", "price":4000}' |./local/ruby-2.1/bin/fluent-cat data.order_logs
@@ -12,7 +22,7 @@
     echo '{"user":"user2", "price":70000}' |./local/ruby-2.1/bin/fluent-cat data.order_logs
     echo '{"user":"user3", "price":100000}' |./local/ruby-2.1/bin/fluent-cat data.order_logs
 
-    # mongo
+    # Result
     mongo
     > show dbs
     local   0.078125GB
